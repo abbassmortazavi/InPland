@@ -15,10 +15,10 @@ class CreateMenusTable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nameFa');
-            $table->string('nameEn')->nullable();
+            $table->string('nameFa' , 191);
+            $table->string('nameEn' , 191)->nullable();
             $table->integer('type');
-            $table->int('subCat');
+            $table->integer('subCat');
             $table->timestamps();
         });
     }

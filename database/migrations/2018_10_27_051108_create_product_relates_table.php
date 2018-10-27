@@ -13,7 +13,7 @@ class CreateProductRelatedsTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_relateds', function (Blueprint $table) {
+        Schema::create('product_relates', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 191);
             $table->text('content');
@@ -35,6 +35,6 @@ class CreateProductRelatedsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_relateds');
+        Schema::dropIfExists('product_relates');
     }
 }

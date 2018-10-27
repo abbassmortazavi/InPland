@@ -15,9 +15,13 @@ class CreateProductPicsTable extends Migration
     {
         Schema::create('product_pics', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_id');
+            $table->integer('productRelated_id');
             $table->string('name');
             $table->integer('picMain')->default(0);
+
+            $table->integer('productRelated_id')->unsigned();
+            $table->foreign('productRelated_id')->references('id')->on('product_relates')->OnDelete('cascade');
+
             $table->timestamps();
         });
     }

@@ -17,6 +17,13 @@ class CreateCompanyBrandsTable extends Migration
             $table->increments('id');
             $table->integer('brand_id');
             $table->string('company_id');
+
+            $table->integer('brand_id')->unsigned();
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
+
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('companies')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

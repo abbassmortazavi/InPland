@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class pdfTutorial extends Model
+class PdfTutorial extends Model
 {
     //
 }

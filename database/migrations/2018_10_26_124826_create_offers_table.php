@@ -19,8 +19,9 @@ class CreateOffersTable extends Migration
             $table->integer('productRelated_id');
             $table->integer('userIdOffer');
             $table->integer('userIdSend');
-            $table->integer('userIdReceipt');
-            $table->integer('email');
+            $table->integer('userIdOfferReceipt');
+            $table->string('email');
+            $table->integer('type');
             $table->integer('brandIdSend');
             $table->timestamps();
         });

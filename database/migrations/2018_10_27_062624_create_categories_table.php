@@ -17,9 +17,10 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->string('nameFa' , 191);
             $table->string('nameEn' , 191)->nullable();
-            $table->string('pic');
+            $table->string('pic')->nullable();
             $table->string('content');
             $table->integer('type');
+
             $table->timestamps();
         });
     }
