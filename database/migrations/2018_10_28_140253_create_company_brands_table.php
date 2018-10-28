@@ -15,15 +15,10 @@ class CreateCompanyBrandsTable extends Migration
     {
         Schema::create('company_brands', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('brand_id');
-            $table->string('company_id');
-
-
-            //$table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
-
-
-            //$table->foreign('user_id')->references('id')->on('companies')->onDelete('cascade');
-
+            $table->integer('brand_id')->unsigned();
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
+            $table->integer('company_id')->unsigned();
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->timestamps();
         });
     }

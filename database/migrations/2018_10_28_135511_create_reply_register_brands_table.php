@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommentPostsTable extends Migration
+class CreateReplyRegisterBrandsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateCommentPostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('comment_posts', function (Blueprint $table) {
+        Schema::create('reply_register_brands', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->OnDelete('cascade');
-
-            $table->integer('post_id')->nullable();
-            $table->foreign('post_id')->references('id')->on('posts')->OnDelete('cascade');
-
-            $table->string('content');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('detail_register')->nullable();
+            $table->string('detail_brand')->nullable();
+            $table->integer('type');
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ class CreateCommentPostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comment_posts');
+        Schema::dropIfExists('reply_register_brands');
     }
 }

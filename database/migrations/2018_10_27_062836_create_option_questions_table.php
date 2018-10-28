@@ -16,7 +16,7 @@ class CreateOptionQuestionsTable extends Migration
         Schema::create('option_questions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('reply');
-            $table->string('replyRate');
+            $table->string('reply_rate');
             $table->timestamps();
         });
     }

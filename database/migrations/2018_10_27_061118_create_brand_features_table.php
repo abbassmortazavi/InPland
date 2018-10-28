@@ -15,10 +15,11 @@ class CreateBrandFeaturesTable extends Migration
     {
         Schema::create('brand_features', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('featureId');
-            $table->string('productionId')->unique();
-            $table->string('featureVal');
-            $table->string('productionCode');
+            $table->integer('feature_id')->unsigned();
+            $table->foreign('feature_id')->references('id')->on('features')->onDelete('cascade');
+            $table->string('production_line')->unique();
+            $table->string('feature_val');
+            $table->string('production_code')->unique();
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateBrandFeaturesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('brand_feautres');
+        Schema::dropIfExists('brand_features');
     }
 }

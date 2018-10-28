@@ -15,9 +15,15 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('question');
-            $table->integer('questionRate');
+            $table->string('content');
+            $table->integer('user_id_question')->unsigned();
+            $table->foreign('user_id_question')->references('id')->on('users')->OnDelete('cascade');
+            $table->integer('user_id_reply')->unsigned();
+            $table->foreign('user_id_reply')->references('id')->on('users')->OnDelete('cascade');
+            $table->integer('company_id')->unsigned();
+            $table->foreign('company_id')->references('id')->on('companies')->OnDelete('cascade');
             $table->integer('type');
+            $table->boolean('unknown')->default(0);
             $table->timestamps();
         });
     }

@@ -15,18 +15,13 @@ class CreateRateBrandsTable extends Migration
     {
         Schema::create('rate_brands', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('brand_id');
-            $table->integer('user_id');
-            $table->string('productionId');
-            $table->integer('countImplant');
+            $table->integer('brand_id')->unsigned();
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
+            $table->string('production_line');
+            $table->integer('count_implant');
             $table->integer('offer');
-
-
-
-            //$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
-
-           // $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

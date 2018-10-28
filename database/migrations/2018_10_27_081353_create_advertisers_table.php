@@ -17,7 +17,7 @@ class CreateAdvertisersTable extends Migration
             $table->increments('id');
             $table->string('content');
             $table->string('pic' , 150);
-            $table->string('link');
+            $table->string('link')->nullable();
             $table->integer('location');
             $table->timestamps();
         });

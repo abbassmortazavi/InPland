@@ -15,8 +15,8 @@ class CreateMenusTable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nameFa' , 191);
-            $table->string('nameEn' , 191)->nullable();
+            $table->string('name_fa' , 191);
+            $table->string('name_en' , 191)->nullable();
             $table->integer('type');
             $table->integer('subCat');
             $table->timestamps();

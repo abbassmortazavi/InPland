@@ -17,19 +17,16 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('content');
-            $table->string('date' , 100);
-            $table->string('video' , 500);
-            $table->text('link' , 500);
+            $table->string('video' , 500)->nullable();
+            $table->text('link' , 500)->nullable();
             $table->boolean('state')->default(0);
-            $table->integer('user_id');
-            $table->integer('company_id');
-            $table->integer('cat_id');
+            $table->integer('company_id')->unsigned();
+            $table->foreign('company_id')->references('id')->on('companies')->OnDelete('cascade');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->OnDelete('cascade');
+            $table->integer('cat_id')->unsigned();
+            $table->foreign('cat_id')->references('id')->on('categories')->OnDelete('cascade');
             $table->integer('type');
-
-           // $table->foreign('user_id')->references('id')->on('users')->OnDelete('cascade');
-
-            //$table->foreign('cat_id')->references('id')->on('categories')->OnDelete('cascade');
-
             $table->timestamps();
         });
     }
