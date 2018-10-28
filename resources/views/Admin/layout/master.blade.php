@@ -277,10 +277,15 @@
                     </a>
                 </li>
 
-
+                <li>
+                    <a class="" href="{{ route('contact.index') }}">
+                        <i class="icon-pencil"></i>
+                        <span>تماس باما</span>
+                    </a>
+                </li>
 
                 <li>
-                    <a class="" href="">
+                    <a class="" href="{{ route('category.index') }}">
                         <i class="icon-tasks"></i>
                         <span>دسته بندی ها</span>
                     </a>

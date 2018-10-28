@@ -22,6 +22,7 @@ Route::group(['namespace'=>'Admin' , 'prefix'=>'admin'] , function (){
     $this->get('/',function (){ return view('Admin.index');});
     $this->resource('/about','AboutController');
     $this->resource('/contact','ContactUsController');
+    $this->resource('/category','CategoryController');
 });
 
 

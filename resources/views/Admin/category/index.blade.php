@@ -1,4 +1,4 @@
-@extends('panel.layout.master')
+@extends('Admin.layout.master')
 @section('title')
     مدیریت | دسته ها
 @endsection
@@ -109,9 +109,7 @@
                 <tr>
                     <th>#</th>
                     <th>نام</th>
-                    <th>زیردسته</th>
                     <th>تصویر</th>
-
                     <th>عملیات</th>
                 </tr>
                 </thead>
@@ -121,7 +119,6 @@
                     <tr>
                         <td>{{ $val->id }}</td>
                         <td>{{ $val->name }}</td>
-                        <td>{{  cat($val->subcat) }}</td>
                         <td>@if($val->img!="")<img src="{{  Url('upload/cat/')."/".$val->img }}"height="80" width="150"> @else بدون تصویر @endif</td>
                         <td>
                             <button class="btn btn-primary btn-xs" title="ویرایش" data-toggle="modal" href="#edit{{ $val->id }}"><i class="icon-pencil"></i></button>
@@ -133,7 +130,7 @@
 
             </table>
 
-            <span style="margin-right: 45%">{!! $cat->render() !!}</span>
+            <span style="margin-right:45%">{!! $cat->render() !!}</span>
 
 
 
@@ -252,18 +249,3 @@
     </div>
 
 @endsection
-<?php
-use App\Category;
-function cat($id)
-{
-    if ( $id == '0' )
-    {
-        return 'دسته مادر';
-    }
-    else
-    {
-        $category=Category::where('id',$id)->first()['name'];
-        return $category;
-    }
-}
-?>

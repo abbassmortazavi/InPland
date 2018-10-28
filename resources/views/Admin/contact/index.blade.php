@@ -28,7 +28,7 @@
                         <td class="inbox-small-cells">
                             {{ $val->id }}
                         </td>
-                        <td class="view-message  dont-show">{{ $val->name }}</td>
+                        <td class="view-message dont-show">{{ $val->name }}</td>
                         <td class="view-message ">{{ $val->email }}</td>
                         <td class="view-message ">
                             @if($val->state=='1')  <span class="label label-success">تایید شده</span>
@@ -99,7 +99,7 @@
                             <h4 class="modal-title">آیا میخواهید پیام {{$val->name}}  را تایید کنید ؟</h4>                            </div>
                         <div class="modal-body">
 
-                            <form class="cmxform form-horizontal tasi-form" id="commentForm" method="post" action="/panel/contact/{{$val->id}}">
+                            <form class="cmxform form-horizontal tasi-form" id="commentForm" method="post" action="{{ route('contact.update' , $val->id) }}">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <input type="hidden" name="_method" value="PATCH">
                                 <div class="modal-body">
@@ -143,7 +143,7 @@
                         </p>
                     </div>
                     <div class="modal-footer">
-                        <form action="<?= Url('/panel/contact/'.$val->id); ?>" method="POST">
+                        <form action="{{ route('contact.destroy' , $val->id) }}" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="_method" value="DELETE">
 

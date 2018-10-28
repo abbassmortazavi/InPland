@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\ContactUs;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class ContactUsController extends Controller
 {
@@ -14,7 +16,8 @@ class ContactUsController extends Controller
      */
     public function index()
     {
-        //
+        $contact = ContactUs::orderby('id','desc')->paginate(10);
+        return view('Admin.contact.index',compact('contact'));
     }
 
     /**
@@ -33,9 +36,20 @@ class ContactUsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request , $id)
     {
-        //
+        $update = ContactUs::find($id);
+        $update->state=1;
+        if($update->update())
+        {
+            Session::flash('success',' با موفقیت انجام شد');
+            return redirect()->back();
+        }
+        else
+        {
+            Session::flash('unsuccess',' با موفقیت انجام نشد');
+            return redirect()->back();
+        }
     }
 
     /**
@@ -69,7 +83,10 @@ class ContactUsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        ContactUs::where('id' , $id)->update([
+            'state'=> 1
+        ]);
+        return redirect()->back();
     }
 
     /**
@@ -80,6 +97,7 @@ class ContactUsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ContactUs::where('id' , $id)->delete();
+        return redirect()->back();
     }
 }
