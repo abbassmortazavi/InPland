@@ -16,7 +16,7 @@ class CreateAdvertisersTable extends Migration
         Schema::create('advertisers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('content');
-            $table->string('pic');
+            $table->string('pic' , 150);
             $table->string('link');
             $table->integer('location');
             $table->timestamps();

@@ -19,8 +19,7 @@ class CreateProductPicsTable extends Migration
             $table->string('name');
             $table->integer('picMain')->default(0);
 
-            $table->integer('productRelated_id')->unsigned();
-            $table->foreign('productRelated_id')->references('id')->on('product_relates')->OnDelete('cascade');
+            //$table->foreign('productRelated_id')->references('id')->on('product_relates')->OnDelete('cascade');
 
             $table->timestamps();
         });

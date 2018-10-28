@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductRelatedsTable extends Migration
+class CreateProductRelatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,7 +17,6 @@ class CreateProductRelatedsTable extends Migration
             $table->increments('id');
             $table->string('name', 191);
             $table->text('content');
-            $table->string('content');
             $table->string('price');
             $table->integer('inventory');
             $table->text('address');

@@ -22,10 +22,10 @@ class CreateAnswerQuestionsTable extends Migration
             $table->boolean('unKnown')->default(0);
 
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->OnDelete('cascade');
+            //$table->foreign('user_id')->references('id')->on('users')->OnDelete('cascade');
 
-            $table->integer('company_id')->unsigned();
-            $table->foreign('company_id')->references('id')->on('companies')->OnDelete('cascade');
+
+            //$table->foreign('company_id')->references('id')->on('companies')->OnDelete('cascade');
             $table->timestamps();
         });
     }

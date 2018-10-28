@@ -12,6 +12,25 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
+
+
+Route::group(['namespace'=>'Admin' , 'prefix'=>'admin'] , function (){
+
+    $this->get('/',function (){ return view('Admin.index');});
+    $this->resource('/about','AboutController');
+});
+
+
+
+
+
+
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
