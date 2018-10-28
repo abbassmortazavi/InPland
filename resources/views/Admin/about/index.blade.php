@@ -1,4 +1,4 @@
-@extends('panel.layout.master')
+@extends('Admin.layout.master')
 @section('title')
    مدیریت | درباره ما
     @endsection
@@ -9,7 +9,7 @@
                 <header class="panel-heading">
 درباره ما | نمایش محتوای صفحه درباره ما
 
-                    <a class="btn btn-success" href="{{Url('panel/about/create')}}">افزودن متن جدید</a>
+                    <a class="btn btn-success" href="{{ route('about.create') }}">افزودن متن جدید</a>
 
                 </header>
 
@@ -104,13 +104,13 @@
                                 <h4 class="modal-title">ویرایش محتوا {{ $val->id }} با عنوان : {{$val->title}}</h4>                            </div>
                             <div class="modal-body">
 
-                                <form class="cmxform form-horizontal tasi-form" id="commentForm" method="post" action="/panel/about/{{$val->id}}">
+                                <form class="cmxform form-horizontal tasi-form" id="commentForm" method="post" action="{{ route('about.update' , $val->id) }}">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <input type="hidden" name="_method" value="PATCH">
                                     <div class="form-group ">
                                         <label for="cname" class="control-label col-lg-2">عنوان </label>
                                         <div class="col-lg-10">
-                                            <input class=" form-control" value="{{ $val->title }}" id="cname" name="title" minlength="2" type="text" required />
+                                            <input class=" form-control" value="{{ $val->title }}" id="cname" name="title" minlength="2" type="text"/>
                                         </div>
                                     </div>
                                     <div class="form-group ">
@@ -157,7 +157,7 @@
                         </p>
                     </div>
                     <div class="modal-footer">
-                    <form action="<?= Url('/panel/about/'.$val->id); ?>" method="POST">
+                    <form action="{{ route('about.destroy' , $val->id) }}" method="POST">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="_method" value="DELETE">
 

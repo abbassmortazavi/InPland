@@ -16,7 +16,7 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $about =About::orderby('id','desc')->get();
+        $about = About::orderby('id','desc')->get();
         return view('Admin.about.index',compact('about'));
     }
 
@@ -38,7 +38,7 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
-        $data=new About($request->all());
+        $data = new About($request->all());
         if($data->save())
         {
             Session::flash('success',' با موفقیت انجام شد');
