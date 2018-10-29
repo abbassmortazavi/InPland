@@ -23,6 +23,9 @@ Route::group(['namespace'=>'Admin' , 'prefix'=>'admin'] , function (){
     $this->resource('/about','AboutController');
     $this->resource('/contact','ContactUsController');
     $this->resource('/category','CategoryController');
+    $this->resource('/brand','BrandController');
+    $this->resource('/feature','FeatureController');
+    $this->resource('/offer','OfferController');
 });
 
 

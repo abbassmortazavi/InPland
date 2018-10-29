@@ -2,10 +2,10 @@ var Script = function () {
 
 
 
-//    sidebar dropdown menu
+//    sidebar dropdown brand
 
-    jQuery('#sidebar .sub-menu > a').click(function () {
-        var last = jQuery('.sub-menu.open', $('#sidebar'));
+    jQuery('#sidebar .sub-brand > a').click(function () {
+        var last = jQuery('.sub-brand.open', $('#sidebar'));
         last.removeClass("open");
         jQuery('.arrow', last).removeClass("open");
         jQuery('.sub', last).slideUp(200);

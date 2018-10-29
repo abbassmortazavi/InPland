@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="modal-body">
 
-                                    <form class="cmxform form-horizontal tasi-form" id="commentForm" method="post" action="/panel/category/" enctype="multipart/form-data">
+                                    <form class="cmxform form-horizontal tasi-form" id="commentForm" method="post" action="{{ route('category.store') }}" enctype="multipart/form-data">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                         <div class="form-group ">
@@ -100,7 +100,7 @@
 
             </div>
         @endif
-        @include('errors.errors')
+        {{--@include('Admin.errors.errors')--}}
 
 
         <div class="panel-body">
@@ -108,8 +108,10 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>نام</th>
+                    <th>نام فارسی</th>
+                    <th>نام لاتین</th>
                     <th>تصویر</th>
+                    <th>محتوا</th>
                     <th>عملیات</th>
                 </tr>
                 </thead>
@@ -144,28 +146,35 @@
                                 <h4 class="modal-title">ویرایش دسته {{ $val->id }} با نام : {{$val->name}}</h4>                            </div>
                             <div class="modal-body">
 
-                                <form class="cmxform form-horizontal tasi-form" id="commentForm" method="post" action="/panel/category/{{$val->id}}" enctype="multipart/form-data">
+                                <form class="cmxform form-horizontal tasi-form" id="commentForm" method="post" action="{{ route('category.update' , $val->id) }}" enctype="multipart/form-data">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <input type="hidden" name="_method" value="PATCH">
 
                                     <div class="form-group ">
-                                        <label for="cname" class="control-label col-lg-2">نام </label>
+                                        <label for="name_fa" class="control-label col-lg-2">نام </label>
                                         <div class="col-lg-10">
-                                            <input class=" form-control" value="{{$val->name}}"  id="cname" name="name" minlength="2" type="text" required />
+                                            <input class=" form-control" value="{{$val->name_fa}}"  id="name_fa" name="name_fa" minlength="2" type="text" />
                                         </div>
                                     </div>
 
                                     <div class="form-group ">
-                                        <label for="cname" class="control-label col-lg-2">مرتب سازی </label>
+                                        <label for="name_en" class="control-label col-lg-2">نام </label>
                                         <div class="col-lg-10">
-                                            <input class=" form-control"  id="cname" name="sorting"  type="number" value="{{ $val->sorting }}"  />
+                                            <input class=" form-control" value="{{$val->name_en}}"  id="name_en" name="name_en" minlength="2" type="text" />
                                         </div>
                                     </div>
 
                                     <div class="form-group ">
-                                        <label for="cname" class="control-label col-lg-2">تصویر</label>
+                                        <label for="pic" class="control-label col-lg-2">تصویر</label>
                                         <div class="col-lg-10">
-                                            <input class=" form-control"  id="cname" name="img" minlength="2" type="file"  />
+                                            <input class=" form-control"  id="pic" name="pic" minlength="2" type="file"  />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="content" class="control-label col-lg-2">محتوا </label>
+                                        <div class="col-lg-10">
+                                            <input class=" form-control"  id="content" name="content"  value="{{ $val->content }}"  />
                                         </div>
                                     </div>
                                     @if($val->img!="")<img src="{{  Url('upload/cat/')."/".$val->img }}"height="150" width="200">   @endif

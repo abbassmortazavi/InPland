@@ -184,7 +184,7 @@
     <!--sidebar start-->
     <aside>
         <div id="sidebar"  class="nav-collapse ">
-            <!-- sidebar menu start-->
+            <!-- sidebrandmenu start-->
             <ul class="sidebar-menu">
                 <li class="active">
                     <a class="" href="">
@@ -291,12 +291,26 @@
                     </a>
                 </li>
 
+                <li>
+                    <a class="" href="{{ route('brand.index') }}">
+                        <i class="icon-tasks"></i>
+                        <span>برند</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="" href="{{ route('feature.index') }}">
+                        <i class="icon-tasks"></i>
+                        <span>ویژگی ها</span>
+                    </a>
+                </li>
+
 
 
 
 
             </ul>
-            <!-- sidebar menu end-->
+            <!-- sidebrandmenu end-->
         </div>
     </aside>
     <!--sidebar end-->
